@@ -28,6 +28,6 @@ resource "null_resource" "generate_inventory" {
   }
 
   provisioner "local-exec" {
-    command = "${path.module}/generate_inventory.sh"
+    command = "~/home-infra/scripts/generate_inventory.sh"
   }
 }

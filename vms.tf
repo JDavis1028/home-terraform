@@ -1,11 +1,14 @@
 resource "proxmox_vm_qemu" "vms" {
   for_each = local.vms
 
+  depends_on = [
+    null_resource.cloud_init_config_files
+  ]
+
   name        = each.key
   target_node = each.value.target_node
   vmid        = each.value.vmid
   memory      = each.value.memory
-  ipconfig0   = "ip=dhcp"
 
 
   os_type          = "cloud-init"
@@ -17,7 +20,7 @@ resource "proxmox_vm_qemu" "vms" {
   # ciuser = "j"
   # sshkeys = trimspace(file("~/.ssh/id_ed25519.pub"))
   boot     = "order=scsi0"
-  cicustom = "user=local:snippets/disk_setup.yaml"
+  cicustom = "user=local:snippets/user_data_${each.key}.yml,network=local:snippets/network_${each.key}.yml"
 
   cpu {
     type    = "x86-64-v2-AES"

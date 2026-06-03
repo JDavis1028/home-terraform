@@ -1,0 +1,30 @@
+#cloud-config
+hostname: "${hostname}"
+fqdn: "${hostname}.local"
+bootcmd:
+    - mkdir -p /home
+disk_setup:
+    /dev/sdb:
+        table_type: gpt
+        layout: true
+fs_setup:
+    - label: home
+      filesystem: ext4
+      device: /dev/sdb1
+      overwrite: false
+mounts:
+    - [ "LABEL=home", "/home", "ext4", "defaults,nofail", "0", "2" ]
+packages:
+  - qemu-guest-agent
+runcmd:
+  - systemctl enable qemu-guest-agent
+  - systemctl start qemu-guest-agent
+users:
+  - name: j
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh-authorized-keys:
+      - ${ssh_key_j}
+  - name: ansible
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh-authorized-keys:
+      - ${ansible_key}
