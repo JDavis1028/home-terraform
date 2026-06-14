@@ -8,7 +8,7 @@ locals {
       cores       = 2
       disk0_size  = "6G"
       disk1_size  = "32G"
-      ip          = "192.168.1.15/24"
+      ip          = "192.168.1.19/24"
     }
 
     # "pd1-vm-docker-2" = {
