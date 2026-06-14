@@ -20,7 +20,7 @@ resource "proxmox_lxc" "lxcs" {
 
   rootfs {
     storage = "local-lvm"
-    size    = "4G"
+    size    = each.value.size
   }
 
   network {
