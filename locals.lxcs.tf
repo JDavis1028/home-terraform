@@ -29,5 +29,15 @@ locals {
       ip = "192.168.1.13/24"
       size = "16G"
     }
+
+    "pd2-lxc-gitlab" = {
+      hostname = "pd2-lxc-gitlab"
+      target_node = "PVEProdesk2"
+      vmid = 251
+      cores = 4
+      memory = 8224
+      ip = "192.168.1.14/24"
+      size = "16G"
+    }
   }
 }
