@@ -4,12 +4,6 @@ variable "root_password" {
   sensitive   = true
 }
 
-variable "gateway" {
-  description = "default gateway"
-  type        = string
-  sensitive   = false
-}
-
 variable "pm_api_url" {
   description = "Proxmox api url"
   type        = string

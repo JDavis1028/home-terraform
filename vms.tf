@@ -68,6 +68,7 @@ resource "proxmox_vm_qemu" "database_vms" {
   target_node = each.value.target_node
   vmid        = each.value.vmid
   memory      = each.value.memory
+  start_at_node_boot = true
 
 
   os_type          = "cloud-init"
@@ -79,7 +80,7 @@ resource "proxmox_vm_qemu" "database_vms" {
   # ciuser = "j"
   # sshkeys = trimspace(file("~/.ssh/id_ed25519.pub"))
   boot     = "order=scsi0"
-  cicustom = "user=local:snippets/db_user_data_${each.key}.yml,network=local:snippets/network_${each.key}.yml"
+  cicustom = "user=local:snippets/db_user_data_${each.key}.yml,network=local:snippets/db_network_${each.key}.yml"
 
   cpu {
     type    = "x86-64-v2-AES"

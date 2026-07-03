@@ -1,19 +1,22 @@
 #cloud-config
 hostname: "${hostname}"
-fqdn: "${hostname}.jacknet.online"
+fqdn: "${hostname}.db.jacknet.online"
 bootcmd:
     - mkdir -p /home
+    - mkdir -p /var/lib/postgresql
+    - mkdir -p /var/lib/redis
+    
 disk_setup:
     /dev/sdb:
         table_type: gpt
         layout: true
 fs_setup:
-    - label: varlib
+    - label: dbdata
       filesystem: ext4
       device: /dev/sdb1
       overwrite: false
 mounts:
-    - [ "LABEL=varlib", "/var/lib", "ext4", "defaults,nofail", "0", "2" ]
+    - [ "LABEL=dbdata", "/var/lib/postgresql", "ext4", "defaults,nofail", "0", "2" ]
 packages:
   - qemu-guest-agent
 runcmd:

@@ -8,6 +8,7 @@ resource "local_file" "cloud_init_user_data_file" {
   })
   filename = "${path.module}/files/user_data_${each.key}.cfg"
 }
+
 resource "local_file" "cloud_init_db_user_data_file" {
   for_each = local.database_vms
 
@@ -16,7 +17,7 @@ resource "local_file" "cloud_init_db_user_data_file" {
     ansible_key = var.ssh_public_key_ansible
     hostname    = each.key
   })
-  filename = "${path.module}/files/user_data_db_${each.key}.cfg"
+  filename = "${path.module}/files/db_user_data_${each.key}.cfg"
 }
 
 resource "local_file" "cloud_init_network_file" {
@@ -31,10 +32,10 @@ resource "local_file" "cloud_init_network_file" {
 resource "local_file" "cloud_init_db_network_file" {
   for_each = local.database_vms
 
-  content = templatefile("${path.module}/cloud-inits/network.tftpl", {
+  content = templatefile("${path.module}/cloud-inits/db_network.tftpl", {
     ip = each.value.ip
   })
-  filename = "${path.module}/files/network_${each.key}.cfg"
+  filename = "${path.module}/files/db_network_${each.key}.cfg"
 }
 
 resource "null_resource" "cloud_init_config_files" {
@@ -67,9 +68,9 @@ resource "null_resource" "cloud_init_db_config_files" {
   for_each = local.database_vms
 
   triggers = {
-    user_hash    = local_file.cloud_init_db_user_data_file[each.key].content
-    network_hash = local_file.cloud_init_db_network_file[each.key].content
+    always_run = timestamp()   # forces it to run every apply
   }
+
 
   connection {
     type     = "ssh"
