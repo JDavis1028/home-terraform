@@ -68,7 +68,7 @@ resource "null_resource" "cloud_init_db_config_files" {
   for_each = local.database_vms
 
   triggers = {
-    always_run = timestamp()   # forces it to run every apply
+    always_run = timestamp() # forces it to run every apply
   }
 
 
