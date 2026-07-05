@@ -14,6 +14,7 @@ resource "proxmox_vm_qemu" "vms" {
   os_type          = "cloud-init"
   agent            = 1
   agent_timeout    = 180
+  skip_ipv6 = true
   automatic_reboot = true
   clone            = "Ubuntu-Cloud-26.04"
   full_clone       = true
@@ -64,16 +65,17 @@ resource "proxmox_vm_qemu" "database_vms" {
     null_resource.cloud_init_db_config_files
   ]
 
-  name        = each.key
-  target_node = each.value.target_node
-  vmid        = each.value.vmid
-  memory      = each.value.memory
+  name               = each.key
+  target_node        = each.value.target_node
+  vmid               = each.value.vmid
+  memory             = each.value.memory
   start_at_node_boot = true
 
 
   os_type          = "cloud-init"
   agent            = 1
   agent_timeout    = 180
+  skip_ipv6 = true
   automatic_reboot = true
   clone            = "Ubuntu-Cloud-26.04"
   full_clone       = true
