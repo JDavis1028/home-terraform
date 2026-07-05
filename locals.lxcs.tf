@@ -7,7 +7,8 @@ locals {
       cores       = 2
       memory      = 2048
       ip          = "192.168.20.11/24"
-      size = "20G"
+      gateway     = "192.168.20.1"
+      size        = "20G"
     }
 
     "pd1-lxc-traefik" = {
@@ -17,27 +18,41 @@ locals {
       cores       = 2
       memory      = 2048
       ip          = "192.168.20.12/24"
-      size = "6G"
+      gateway     = "192.168.20.1"
+      size        = "6G"
     }
 
     "pd1-lxc-authentik" = {
-      hostname = "pd1-lxc-traefik"
+      hostname    = "pd1-lxc-traefik"
       target_node = "PVEProdesk1"
-      vmid = 153
-      cores = 2
-      memory = 4096
-      ip = "192.168.20.13/24"
-      size = "16G"
+      vmid        = 153
+      cores       = 2
+      memory      = 4096
+      ip          = "192.168.20.13/24"
+      gateway     = "192.168.20.1"
+      size        = "16G"
     }
 
     "pd2-lxc-gitlab" = {
-      hostname = "pd2-lxc-gitlab"
+      hostname    = "pd2-lxc-gitlab"
       target_node = "PVEProdesk2"
-      vmid = 251
-      cores = 4
-      memory = 8224
-      ip = "192.168.20.14/24"
-      size = "16G"
+      vmid        = 251
+      cores       = 4
+      memory      = 8224
+      ip          = "192.168.20.14/24"
+      gateway     = "192.168.20.1"
+      size        = "16G"
+    }
+
+    "pd2-lxc-codeserver" = {
+      hostname    = "pd2-lxc-codeserver"
+      target_node = "PVEProdesk2"
+      vmid        = 252
+      cores       = 2
+      memory      = 3072
+      ip          = "192.168.25.11/24"
+      gateway     = "192.168.25.1"
+      size        = "16G"
     }
   }
 }
