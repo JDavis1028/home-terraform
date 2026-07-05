@@ -3,7 +3,7 @@ resource "proxmox_lxc" "lxcs" {
 
   hostname        = each.key
   target_node     = each.value.target_node
-  onboot = true
+  onboot          = true
   unprivileged    = true
   ostemplate      = "local:vztmpl/ubuntu-25.04-standard_25.04-1.1_amd64.tar.zst"
   password        = var.root_password
@@ -28,7 +28,7 @@ resource "proxmox_lxc" "lxcs" {
     name     = "eth0"
     bridge   = "vmbr0"
     ip       = each.value.ip
-    gw       = "192.168.20.1"
+    gw       = each.value.gateway
     firewall = false
   }
 }
