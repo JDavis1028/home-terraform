@@ -22,10 +22,10 @@ locals {
       size        = "6G"
     }
 
-    "pd1-lxc-authentik" = {
-      hostname    = "pd1-lxc-traefik"
-      target_node = "PVEProdesk1"
-      vmid        = 153
+    "pd3-lxc-authentik" = {
+      hostname    = "pd1-lxc-authentik"
+      target_node = "PVEProdesk3"
+      vmid        = 351
       cores       = 2
       memory      = 4096
       ip          = "192.168.20.13/24"
