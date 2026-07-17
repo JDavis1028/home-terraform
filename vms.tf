@@ -114,6 +114,7 @@ resource "proxmox_vm_qemu" "database_vms" {
     id        = 0
     model     = "virtio"
     bridge    = "vmbr0"
+    tag = each.value.vlan
     firewall  = false
     link_down = false
   }

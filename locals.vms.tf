@@ -13,6 +13,7 @@ locals {
       disk0_size  = "6G"
       disk1_size  = "64G"
       ip          = "192.168.25.21/24"
+      vlan = 25
     }
 
   }

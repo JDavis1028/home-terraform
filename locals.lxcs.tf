@@ -8,6 +8,7 @@ locals {
       memory      = 2048
       ip          = "192.168.20.11/24"
       gateway     = "192.168.20.1"
+      vlan = 20
       size        = "20G"
     }
 
@@ -19,6 +20,7 @@ locals {
       memory      = 2048
       ip          = "192.168.20.12/24"
       gateway     = "192.168.20.1"
+      vlan = 20
       size        = "6G"
     }
 
@@ -30,6 +32,7 @@ locals {
       memory      = 4096
       ip          = "192.168.20.13/24"
       gateway     = "192.168.20.1"
+      vlan = 20
       size        = "16G"
     }
 
@@ -41,6 +44,7 @@ locals {
       memory      = 8224
       ip          = "192.168.20.14/24"
       gateway     = "192.168.20.1"
+      vlan = 20
       size        = "16G"
     }
 
@@ -52,6 +56,7 @@ locals {
       memory      = 3072
       ip          = "192.168.25.11/24"
       gateway     = "192.168.25.1"
+      vlan = 25
       size        = "16G"
     }
   }
