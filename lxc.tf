@@ -29,7 +29,7 @@ resource "proxmox_lxc" "lxcs" {
     bridge   = "vmbr0"
     ip       = each.value.ip
     gw       = each.value.gateway
-    tag = each.value.vlan
+    tag      = each.value.vlan
     firewall = false
   }
 }

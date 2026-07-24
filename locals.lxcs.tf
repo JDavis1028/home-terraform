@@ -8,7 +8,7 @@ locals {
       memory      = 2048
       ip          = "192.168.20.11/24"
       gateway     = "192.168.20.1"
-      vlan = 20
+      vlan        = 20
       size        = "20G"
     }
 
@@ -20,7 +20,7 @@ locals {
       memory      = 2048
       ip          = "192.168.20.12/24"
       gateway     = "192.168.20.1"
-      vlan = 20
+      vlan        = 20
       size        = "6G"
     }
 
@@ -32,7 +32,7 @@ locals {
       memory      = 4096
       ip          = "192.168.20.13/24"
       gateway     = "192.168.20.1"
-      vlan = 20
+      vlan        = 20
       size        = "16G"
     }
 
@@ -41,10 +41,10 @@ locals {
       target_node = "PVEProdesk2"
       vmid        = 251
       cores       = 4
-      memory      = 8224
+      memory      = 8192
       ip          = "192.168.20.14/24"
       gateway     = "192.168.20.1"
-      vlan = 20
+      vlan        = 20
       size        = "16G"
     }
 
@@ -56,7 +56,7 @@ locals {
       memory      = 3072
       ip          = "192.168.25.11/24"
       gateway     = "192.168.25.1"
-      vlan = 25
+      vlan        = 25
       size        = "16G"
     }
   }

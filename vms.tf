@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "vms" {
   os_type          = "cloud-init"
   agent            = 1
   agent_timeout    = 180
-  skip_ipv6 = true
+  skip_ipv6        = true
   automatic_reboot = true
   clone            = "Ubuntu-Cloud-26.04"
   full_clone       = true
@@ -75,7 +75,7 @@ resource "proxmox_vm_qemu" "database_vms" {
   os_type          = "cloud-init"
   agent            = 1
   agent_timeout    = 180
-  skip_ipv6 = true
+  skip_ipv6        = true
   automatic_reboot = true
   clone            = "Ubuntu-Cloud-26.04"
   full_clone       = true
@@ -114,7 +114,7 @@ resource "proxmox_vm_qemu" "database_vms" {
     id        = 0
     model     = "virtio"
     bridge    = "vmbr0"
-    tag = each.value.vlan
+    tag       = each.value.vlan
     firewall  = false
     link_down = false
   }
