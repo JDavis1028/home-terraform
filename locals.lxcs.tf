@@ -1,5 +1,8 @@
 locals {
   lxc = {
+
+    # --- Prodesk1 --- 
+
     "pd1-lxc-homepage" = {
       hostname    = "pd1-lxc-homepage"
       target_node = "PVEProdesk1"
@@ -24,17 +27,7 @@ locals {
       size        = "6G"
     }
 
-    "pd3-lxc-authentik" = {
-      hostname    = "pd1-lxc-authentik"
-      target_node = "PVEProdesk3"
-      vmid        = 351
-      cores       = 2
-      memory      = 4096
-      ip          = "192.168.20.13/24"
-      gateway     = "192.168.20.1"
-      vlan        = 20
-      size        = "16G"
-    }
+    # --- Prodesk2 ---
 
     "pd2-lxc-gitlab" = {
       hostname    = "pd2-lxc-gitlab"
@@ -57,6 +50,32 @@ locals {
       ip          = "192.168.25.11/24"
       gateway     = "192.168.25.1"
       vlan        = 25
+      size        = "16G"
+    }
+
+    # --- Prodesk3 ---
+
+    "pd3-lxc-authentik" = {
+      hostname    = "pd1-lxc-authentik"
+      target_node = "PVEProdesk3"
+      vmid        = 351
+      cores       = 2
+      memory      = 4096
+      ip          = "192.168.20.13/24"
+      gateway     = "192.168.20.1"
+      vlan        = 20
+      size        = "16G"
+    }
+
+    "pd3-lxc-headscale" = {
+      hostname    = "pd3-lxc-headscale"
+      target_node = "PVEProdesk3"
+      vmid        = 352
+      cores       = 2
+      memory      = 2048
+      ip          = "192.168.30.11/24"
+      gateway     = "192.168.30.11"
+      vlan        = 30
       size        = "16G"
     }
   }
