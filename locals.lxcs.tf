@@ -74,7 +74,7 @@ locals {
       cores       = 2
       memory      = 2048
       ip          = "192.168.30.11/24"
-      gateway     = "192.168.30.11"
+      gateway     = "192.168.30.1"
       vlan        = 30
       size        = "16G"
     }
