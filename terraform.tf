@@ -25,6 +25,7 @@ resource "null_resource" "generate_inventory" {
   triggers = {
     vm_ips  = jsonencode({ for k, v in proxmox_vm_qemu.vms : k => v.default_ipv4_address })
     lxc_ips = jsonencode({ for k, v in proxmox_lxc.lxcs : k => v.network[0].ip })
+    db_vm_ips  = jsonencode({ for k, v in proxmox_vm_qemu.database_vms : k => v.default_ipv4_address })
   }
 
   provisioner "local-exec" {

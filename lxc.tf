@@ -1,7 +1,7 @@
 resource "proxmox_lxc" "lxcs" {
   for_each = local.lxc
 
-  hostname        = each.key
+  hostname        = "srv.${each.key}.${var.domain_name}"
   target_node     = each.value.target_node
   onboot          = true
   unprivileged    = true

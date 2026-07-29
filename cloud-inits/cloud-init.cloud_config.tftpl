@@ -1,6 +1,7 @@
 #cloud-config
 hostname: "${hostname}"
-fqdn: "${hostname}.jacknet.online"
+fqdn: "srv.${hostname}.${domain_name}"
+prefer_fqdn_over_hostname: true
 bootcmd:
     - mkdir -p /home
 disk_setup:

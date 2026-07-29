@@ -54,3 +54,9 @@ variable "pve_host" {
   description = "Proxmox Address"
   sensitive   = true
 }
+
+variable "domain_name" {
+  type = string
+  description = "Domain Name"
+  sensitive = true
+}

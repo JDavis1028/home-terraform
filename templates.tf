@@ -5,6 +5,7 @@ resource "local_file" "cloud_init_user_data_file" {
     ssh_key_j   = var.ssh_public_key_j
     ansible_key = var.ssh_public_key_ansible
     hostname    = each.key
+    domain_name = var.domain_name
   })
   filename = "${path.module}/files/user_data_${each.key}.cfg"
 }
@@ -16,6 +17,7 @@ resource "local_file" "cloud_init_db_user_data_file" {
     ssh_key_j   = var.ssh_public_key_j
     ansible_key = var.ssh_public_key_ansible
     hostname    = each.key
+    domain_name = var.domain_name
   })
   filename = "${path.module}/files/db_user_data_${each.key}.cfg"
 }

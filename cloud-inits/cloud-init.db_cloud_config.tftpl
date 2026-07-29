@@ -1,6 +1,7 @@
 #cloud-config
 hostname: "${hostname}"
-fqdn: "${hostname}.db.jacknet.online"
+fqdn: "srv.db.${hostname}.${domain_name}"
+prefer_fqdn_over_hostname: true
 bootcmd:
     - mkdir -p /home
     - mkdir -p /var/lib/postgresql
